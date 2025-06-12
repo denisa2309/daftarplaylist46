@@ -1,6 +1,6 @@
 <h1 align="center">🎵 Web Playlist App - [Middle-Exam] Web Framework</h1>
 
-<p align="center">
+<p align="justify">
   A simple and modern <b>ReactJS Playlist Web App</b> designed as a middle exam assignment for the Web Framework course.<br/>
   Styled beautifully with <b>TailwindCSS</b>, and structured for scalability and reusability.
 </p>
