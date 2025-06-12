@@ -9,12 +9,7 @@ import { SiYoutube } from 'react-icons/si';
 const Card = () => {
   const { data, loading, error } = useFetchPlaylist();
 
-  if (loading)
-    return (
-      <>
-        <Loading />
-      </>
-    );
+  if (loading) return <Loading />;
 
   if (error) return <p>Error: {error.message}</p>;
 
