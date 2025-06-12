@@ -41,7 +41,7 @@ src/
 
 <hr/>
 
-<h2>🖥️ Screenshots</h2>
+<h2>🖥️ Documentation</h2>
 
 <table>
   <tr>
@@ -50,10 +50,22 @@ src/
   </tr>
   <tr>
     <td align="center">
-      <img src="https://imgur.com/f9kxVok" alt="Landing Pages" width="400"/>
+      <img src="/public/landing-pages.png" alt="landing-pages" width="400"/>
     </td>
     <td align="center">
-      <img src="https://imgur.com/I27YCBY" alt="Form View" width="400"/>
+      <img src="/public/form-view.png" alt="form-view" width="400"/>
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><b>Confirmation Button</b></td>
+    <td align="center"><b>Sweet Alert</b></td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="/public/confirmation-button.png" alt="confirmation-button" width="400"/>
+    </td>
+    <td align="center">
+      <img src="/public/sweet-alert.png" alt="sweet-alert" width="400"/>
     </td>
   </tr>
 </table>
