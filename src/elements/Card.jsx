@@ -22,7 +22,7 @@ const Card = () => {
   }
 
   return (
-    <div className='flex flex-row flex-wrap justify-between gap-4'>
+    <div className='grid grid-cols-3 gap-4'>
       {data.map((item) => (
         <div
           key={item.id_play}
