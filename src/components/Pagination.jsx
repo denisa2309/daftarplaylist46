@@ -1,0 +1,34 @@
+import { GrFormNext, GrFormPrevious } from 'react-icons/gr';
+
+const Pagination = ({
+  currentPage,
+  totalPages,
+  goToPrevPage,
+  goToNextPage,
+}) => {
+  return (
+    <div className='flex justify-center items-center my-10 text-gray-600'>
+      <button
+        onClick={goToPrevPage}
+        disabled={currentPage === 1}
+        className='cursor-pointer disabled:cursor-not-allowed hover:text-black'
+      >
+        <GrFormPrevious size={24} />
+      </button>
+
+      <span>
+        Halaman {currentPage} dari {totalPages}
+      </span>
+
+      <button
+        onClick={goToNextPage}
+        disabled={currentPage === totalPages}
+        className='cursor-pointer disabled:cursor-not-allowed hover:text-black'
+      >
+        <GrFormNext size={24} />
+      </button>
+    </div>
+  );
+};
+
+export default Pagination;
