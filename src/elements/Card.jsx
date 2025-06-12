@@ -3,8 +3,8 @@ import { useFetchPlaylist } from '../hooks/useFetchPlaylist';
 import dayjs from 'dayjs';
 import 'dayjs/locale/id';
 import { SiYoutube } from 'react-icons/si';
-// import { RiDeleteBin6Line } from 'react-icons/ri';
-// import { FiEdit } from 'react-icons/fi';
+import { RiDeleteBin6Line } from 'react-icons/ri';
+import { FiEdit } from 'react-icons/fi';
 
 const Card = () => {
   const { data, loading, error } = useFetchPlaylist();
@@ -33,7 +33,7 @@ const Card = () => {
             href={item.play_url}
             target='_blank'
             rel='noopener noreferrer'
-            className='relative flex flex-col items-center justify-center w-11/12 h-1/2 mb-1'
+            className='relative flex flex-col items-center justify-center w-11/12 h-40'
           >
             <img
               src={item.play_thumbnail}
@@ -51,21 +51,33 @@ const Card = () => {
             href={item.play_url}
             target='_blank'
             rel='noopener noreferrer'
-            className='text-xl font-semibold mt-4'
+            className='text-xl font-semibold'
           >
             {item.play_name}
           </a>
 
           {/* Description */}
-          <span className='text-gray-600 mt-2'>
+          <span className='text-gray-600 text-base -mt-0 pt-1'>
             Ditambah oleh {item.play_description} pada{' '}
             {dayjs(item.created_at).locale('id').format('D MMMM YYYY')}
           </span>
 
-          {/* Genre */}
-          <span className='text-sm mt-2 bg-gray-100 rounded-full px-2 py-1 inline-block'>
-            #{item.play_genre}
-          </span>
+          <div className='flex justify-between items-center w-11/12 -mt-5 py-3'>
+            {/* Genre */}
+            <span className='text-sm bg-gray-100 rounded-full px-2 py-1'>
+              #{item.play_genre}
+            </span>
+
+            {/* Actions */}
+            <div className='-mt-0'>
+              <button className='text-gray-500 hover:text-gray-800 text-xl'>
+                <FiEdit />
+              </button>
+              <button className='text-gray-500 hover:text-gray-800 text-xl'>
+                <RiDeleteBin6Line />
+              </button>
+            </div>
+          </div>
         </div>
       ))}
     </div>
