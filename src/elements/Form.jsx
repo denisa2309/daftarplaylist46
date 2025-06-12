@@ -52,7 +52,7 @@ const Form = () => {
       onSubmit={handleSubmit}
       className='flex flex-col gap-4 p-4 mt-6 max-w-md mx-auto bg-white rounded-2xl border border-blue-200'
     >
-      <h2 className='text-xl font-semibold text-center mb-2'>
+      <h2 className='text-2xl font-semibold text-center mb-2'>
         Tambah Playlist Baru
       </h2>
 
