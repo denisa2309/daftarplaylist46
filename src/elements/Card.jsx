@@ -1,7 +1,7 @@
-import Loading from '../components/Loading';
-import { useFetchPlaylist } from '../hooks/useFetchPlaylist';
 import dayjs from 'dayjs';
 import 'dayjs/locale/id';
+import Loading from '../components/Loading';
+import { useFetchPlaylist } from '../hooks/useFetchPlaylist';
 import { SiYoutube } from 'react-icons/si';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { FiEdit } from 'react-icons/fi';
@@ -9,10 +9,13 @@ import { FiEdit } from 'react-icons/fi';
 const Card = () => {
   const { data, loading, error } = useFetchPlaylist();
 
+  // Loading component
   if (loading) return <Loading />;
 
+  // Error component
   if (error) return <p>Error: {error.message}</p>;
 
+  // No data available
   if (!data || data.length === 0) {
     return (
       <div className='flex justify-center items-center'>
