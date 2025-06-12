@@ -1,6 +1,7 @@
 import { useState } from 'react';
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
+import Swal from 'sweetalert2';
 import Button from '../components/Button';
 import Form from './Form';
 import { GoSearch } from 'react-icons/go';
@@ -8,6 +9,7 @@ import { ImCancelCircle } from 'react-icons/im';
 
 const Navbar = () => {
   const [showForm, setShowForm] = useState(false);
+  const [searchTerm, setSearchTerm] = useState('');
 
   const toggleForm = () => setShowForm(!showForm);
 
@@ -15,17 +17,40 @@ const Navbar = () => {
     <div className='flex flex-col gap-4'>
       <div className='flex flex-row justify-between items-center'>
         <h1 className='text-3xl font-bold'>Daftar Playlist Saya</h1>
+
+        {/* Add Playlist Button */}
         <Button type='button' onClick={toggleForm}>
           {showForm} + Tambah Playlist
         </Button>
       </div>
 
-      {/* Search input with icon */}
+      {/* Search Input*/}
       <div className='relative w-1/3'>
         <GoSearch className='absolute left-0 -top-0 transform -translate-y-1/3 text-gray-500 text-xl' />
         <input
           type='text'
           placeholder='Cari playlist...'
+          value={searchTerm}
+          onChange={(e) => {
+            const value = e.target.value;
+            setSearchTerm(value);
+
+            // Show alert if input is not empty
+            if (value.trim() !== '') {
+              Swal.fire({
+                icon: 'info',
+                title: 'Fitur Belum Tersedia',
+                text: 'Mohon maaf, fitur ini belum berfungsi.',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: () => {
+                  Swal.showLoading();
+                },
+                backdrop: false,
+              });
+            }
+          }}
           className='w-full pl-10 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-pink-500'
         />
       </div>
