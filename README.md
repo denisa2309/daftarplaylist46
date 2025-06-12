@@ -1,12 +1,51 @@
-# React + Vite
+# 🎵 Web Playlist App - [Middle-Exam] Web Framework
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A simple and modern **ReactJS Playlist Web App** designed as a middle exam assignment for the Web Framework course.  
+Styled beautifully with **TailwindCSS**, and structured for scalability and reusability.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Tech Stack
 
-## Expanding the ESLint configuration
+- ⚛️ **ReactJS** - Frontend Library
+- 🎨 **TailwindCSS** - CSS Framework
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## 📁 Folder Structure
+
+src/
+│
+├── components/ # Smaller UI components (e.g. Button, Loading, etc.)
+├── elements/ # Reusable UI elements (e.g. Card, Form, etc.)
+├── hooks/ # Custom React hooks (e.g. useFetchPlaylist, usePostPlaylist, etc.)
+├── pages/ # Page-level components (if any)
+└── App.jsx # Main App entry
+
+---
+
+## 🎯 Features
+
+✅ Create and Display YouTube Playlists
+✅ Manage YouTube Playlists (update and delete)
+✅ Pagination with Custom Component
+✅ Clean & Modular Codebase
+
+---
+
+## 🖥️ Screenshots
+
+| Desktop View                                  | Form                                      |
+| --------------------------------------------- | ----------------------------------------- |
+| ![Playlist View](https://imgur.com/a/yhohHJQ) | ![Form View](https://imgur.com/a/yhohHJQ) |
+
+---
+
+## 🔧 Installation & Running
+
+```bash
+git clone https://github.com/denisa2309/daftarplaylist46
+cd daftarplaylist46
+npm install
+npm run dev
+```
