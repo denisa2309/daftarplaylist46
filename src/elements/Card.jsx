@@ -2,12 +2,11 @@ import { useState } from 'react';
 import dayjs from 'dayjs';
 import 'dayjs/locale/id';
 import Loading from '../components/Loading';
+import Pagination from '../components/Pagination';
 import { useFetchPlaylist } from '../hooks/useFetchPlaylist';
 import { SiYoutube } from 'react-icons/si';
 import { RiDeleteBin6Line } from 'react-icons/ri';
 import { FiEdit } from 'react-icons/fi';
-import { GrFormNext } from 'react-icons/gr';
-import { GrFormPrevious } from 'react-icons/gr';
 
 const Card = () => {
   const { data, loading, error } = useFetchPlaylist();
@@ -29,16 +28,18 @@ const Card = () => {
     );
   }
 
-  // Pagination logic
+  // Pagination
   const totalPages = Math.ceil(data.length / itemsPerPage);
   const startIndex = (currentPage - 1) * itemsPerPage;
   const endIndex = startIndex + itemsPerPage;
   const currentData = data.slice(startIndex, endIndex);
 
+  // For nex page
   const goToNextPage = () => {
     if (currentPage < totalPages) setCurrentPage(currentPage + 1);
   };
 
+  // For previous page
   const goToPrevPage = () => {
     if (currentPage > 1) setCurrentPage(currentPage - 1);
   };
@@ -106,27 +107,12 @@ const Card = () => {
       </div>
 
       {/* Pagination Controls */}
-      <div className='flex justify-center items-center my-10 text-gray-600'>
-        <button
-          onClick={goToPrevPage}
-          disabled={currentPage === 1}
-          className='cursor-pointer disabled:cursor-not-allowed hover:text-black'
-        >
-          <GrFormPrevious size={24} />
-        </button>
-
-        <span>
-          Halaman {currentPage} dari {totalPages}
-        </span>
-
-        <button
-          onClick={goToNextPage}
-          disabled={currentPage === totalPages}
-          className='cursor-pointer disabled:cursor-not-allowed hover:text-black'
-        >
-          <GrFormNext size={24} />
-        </button>
-      </div>
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        goToPrevPage={goToPrevPage}
+        goToNextPage={goToNextPage}
+      />
     </>
   );
 };
