@@ -16,7 +16,7 @@ const Navbar = () => {
   return (
     <div className='flex flex-col gap-4'>
       <div className='flex flex-row justify-between items-center'>
-        <h1 className='text-3xl font-bold'>Daftar Playlist Saya</h1>
+        <h1 className='text-5xl font-bold'>Daftar Playlist Saya</h1>
 
         {/* Add Playlist Button */}
         <Button type='button' onClick={toggleForm}>
@@ -25,7 +25,7 @@ const Navbar = () => {
       </div>
 
       {/* Search Input*/}
-      <div className='relative w-1/3'>
+      <div className='relative w-2/5'>
         <GoSearch className='absolute left-0 -top-0 transform -translate-y-1/3 text-gray-500 text-xl' />
         <input
           type='text'
