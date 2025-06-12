@@ -1,20 +1,19 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
-import { Routes, Route } from "react-router-dom";
-import PrivateRoute from "./PrivateRoute"; // jika ada
-import DaftarPlaylist from "./pages/DaftarPlaylist/Index";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import LandingPages from "./pages/LandingPages.jsx";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
+    <BrowserRouter
+      future={{
+        v7_relativeSplatPath: true,
+        v7_startTransition: true,
+      }}
+    >
       <Routes>
-        <Route path="/" element={<DaftarPlaylist />} />
-        <Route path="/tambah-playlist" element={<DaftarPlaylist />} />
+        <Route path="/" element={<LandingPages />} />
       </Routes>
-    </div>
+    </BrowserRouter>
   );
-}
+};
 
 export default App;
