@@ -70,6 +70,10 @@ src/
   </tr>
 </table>
 
+<p align="center">
+  🔗 <b>Live Demo:</b> <a href="https://playlist-artelle.vercel.app/" target="_blank">https://playlist-artelle.vercel.app/</a>
+</p>
+
 <hr/>
 
 <h2>🔧 Installation & Running</h2>
