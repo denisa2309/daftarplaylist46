@@ -25,8 +25,8 @@ const Form = ({ initialData = {}, id_play = null }) => {
     e.preventDefault();
 
     const result = await Swal.fire({
-      title: 'Apakah kamu yakin?',
-      text: id_play ? 'Data akan diperbarui!' : 'Data akan disimpan!',
+      title: 'Simpan Playlist',
+      text: 'Apakah kamu yakin ingin menyimpan playlist ini?',
       icon: 'question',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
