@@ -3,15 +3,17 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/id';
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
-import ErrorHandler from '../components/ErrorHandler';
-import Loading from '../components/Loading';
-import Pagination from '../components/Pagination';
-import SearchForeign from '../components/SearchForeign';
 import Form from './Form';
-import { SiYoutube } from 'react-icons/si';
-import { RiDeleteBin6Line } from 'react-icons/ri';
+import {
+  ErrorHandler,
+  Loading,
+  Pagination,
+  SearchForeign,
+} from '../components';
 import { FiEdit } from 'react-icons/fi';
 import { ImCancelCircle } from 'react-icons/im';
+import { RiDeleteBin6Line } from 'react-icons/ri';
+import { SiYoutube } from 'react-icons/si';
 
 const Card = ({
   playlists,
