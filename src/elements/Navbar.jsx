@@ -7,11 +7,10 @@ import { ImCancelCircle } from 'react-icons/im';
 
 const Navbar = () => {
   const [showForm, setShowForm] = useState(false);
-
   const toggleForm = () => setShowForm(!showForm);
 
   return (
-    <div className='pt-3 pb-4'>
+    <div className='pt-2 pb-4'>
       <div className='flex flex-row justify-between items-center'>
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
