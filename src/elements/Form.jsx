@@ -12,7 +12,7 @@ const Form = ({ initialData = {}, id_play = null }) => {
     play_description: initialData.play_description || '',
   });
 
-  const { mutate, loading } = useMutatePlaylist();
+  const { mutatePlaylist, loading } = useMutatePlaylist();
 
   const handleChange = (e) => {
     setFormData({
@@ -37,7 +37,7 @@ const Form = ({ initialData = {}, id_play = null }) => {
     });
 
     if (result.isConfirmed) {
-      const res = await mutate(id_play, formData);
+      const res = await mutatePlaylist(id_play, formData);
       if (res) {
         Swal.fire({
           title: 'Berhasil!',
