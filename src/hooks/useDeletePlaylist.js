@@ -15,7 +15,7 @@ export const useDeletePlaylist = () => {
         `https://webfmsi.singapoly.com/api/playlist/${id_play}`
       );
 
-      setData(response.data.datas);
+      setData(response.data);
     } catch (err) {
       setError(err);
     } finally {
