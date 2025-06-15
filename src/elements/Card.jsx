@@ -30,45 +30,88 @@ const Card = ({
   const endIndex = startIndex + itemsPerPage;
   const currentData = playlists.slice(startIndex, endIndex);
 
+  const handleEdit = (item) => {
+    setEditData(item);
+    setEditMode(true);
+  };
+
+  const handleCloseModal = () => {
+    setEditMode(false);
+    setEditData(null);
+  };
+
   return (
     <>
-      <div className='grid grid-cols-3 gap-4'>
+      {/* Modal */}
+      {editMode && editData && (
+        <div className="fixed inset-0 z-50 bg-black bg-opacity-50 flex justify-center items-center">
+          <div className="relative w-full max-w-xl bg-white rounded-xl shadow-lg p-6 mx-2">
+            <button
+              onClick={handleCloseModal}
+              className="absolute top-2 right-4 text-2xl text-gray-500 hover:text-red-500"
+            >
+              &times;
+            </button>
+            <Form
+              mode="edit"
+              initialData={editData}
+              onSuccess={() => {
+                setEditMode(false);
+                setEditData(null);
+
+                // Notifikasi di Card setelah edit sukses
+                Swal.fire({
+                  title: "Berhasil!",
+                  text: "Playlist berhasil diperbarui.",
+                  icon: "success",
+                  timer: 1500,
+                  showConfirmButton: false,
+                  backdrop: false,
+                });
+
+                setTimeout(() => {
+                  window.location.reload();
+                }, 1600);
+              }}
+            />
+          </div>
+        </div>
+      )}
+
+      {/* Playlist Cards */}
+      <div className="grid grid-cols-3 gap-4">
         {currentData.map((item) => (
           <div
             key={item.id_play}
             className='flex flex-col gap-1 items-start w-96 rounded-2xl px-3 pb-3 bg-white border border-blue-200 shadow-md hover:shadow-2xl hover:scale-105 transform transition duration-300 ease-in-out'
-          >
-            {/* Thumbnail */}
             <a
               href={item.play_url}
-              target='_blank'
-              rel='noopener noreferrer'
-              className='relative flex flex-col items-center justify-center w-11/12 h-40'
+              target="_blank"
+              rel="noopener noreferrer"
+              className="relative flex flex-col items-center justify-center w-11/12 h-40"
             >
               <img
                 src={item.play_thumbnail}
                 alt={item.play_name}
-                className='w-full h-full object-cover rounded'
+                className="w-full h-full object-cover rounded"
               />
               <div className='absolute inset-0 flex items-center justify-center'>
                 <SiYoutube className='text-white text-7xl' />
               </div>
             </a>
 
-            {/* Title */}
             <a
               href={item.play_url}
-              target='_blank'
-              rel='noopener noreferrer'
-              className='text-xl font-semibold'
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xl font-semibold"
             >
               {item.play_name}
             </a>
 
-            {/* Description */}
-            <span className='text-gray-600 text-base -mt-0 pt-1'>
-              Ditambah oleh {item.play_description} pada{' '}
-              {dayjs(item.created_at).locale('id').format('D MMMM YYYY')}
+            <span className="text-gray-600 text-base -mt-0 pt-1">
+              Ditambah oleh {item.play_description} pada{" "}
+              {dayjs(item.created_at).locale("id").format("D MMMM YYYY")}
             </span>
 
             {/* Genre and Actions */}

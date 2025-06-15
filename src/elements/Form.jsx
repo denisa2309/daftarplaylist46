@@ -2,7 +2,7 @@ import { useState } from 'react';
 import Swal from 'sweetalert2';
 import Button from '../components/Button';
 
-const Form = () => {
+const Form = ({ mode = "create", initialData = {}, onSuccess }) => {
   const [formData, setFormData] = useState({
     play_name: '',
     play_url: '',
@@ -11,11 +11,14 @@ const Form = () => {
     play_description: '',
   });
 
+  useEffect(() => {
+    if (mode === "edit" && initialData) {
+      setFormData(initialData);
+    }
+  }, [mode, initialData]);
+
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
@@ -63,6 +66,20 @@ const Form = () => {
       } catch (err) {
         console.error({ message: err.message });
       }
+
+      Swal.fire({
+        title: "Berhasil!",
+        text:
+          mode === "edit" ? "Playlist diperbarui." : "Playlist ditambahkan.",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+        backdrop: false,
+      });
+
+      if (onSuccess) onSuccess();
+    } catch (err) {
+      Swal.fire("Gagal", err.message, "error");
     }
   };
 
