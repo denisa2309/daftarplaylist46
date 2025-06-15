@@ -45,7 +45,8 @@ const Form = ({ initialData = {}, id_play = null }) => {
             ? 'Data berhasil diperbarui.'
             : 'Data berhasil ditambahkan.',
           icon: 'success',
-          timer: 1500,
+          timer: 2000,
+          timerProgressBar: true,
           showConfirmButton: false,
           backdrop: false,
         }).then(() => {
