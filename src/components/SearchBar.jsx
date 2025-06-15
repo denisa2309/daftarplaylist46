@@ -9,7 +9,7 @@ const SearchBar = ({ searchTerm, onSearchChange }) => {
         placeholder='Cari playlist...'
         value={searchTerm}
         onChange={(e) => onSearchChange(e.target.value)}
-        className='w-full pl-10 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-1 text-gray-600 sm:text-sm text-base'
+        className='w-full pl-11 py-2 border border-blue-200 rounded-lg focus:outline-none focus:ring-1 text-gray-600 sm:text-lg text-base'
       />
     </div>
   );

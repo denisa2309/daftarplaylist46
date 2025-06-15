@@ -1,7 +1,7 @@
 const Footer = () => {
   return (
-    <footer className='w-full flex flex-col items-center mt-10'>
-      <div className='w-full max-w-xs sm:max-w-md border-t border-gray-300 my-2'></div>
+    <footer className='flex flex-col items-center mt-10'>
+      <div className='w-4/5 sm:w-2/5 border-t border-gray-300 my-2'></div>
       <div className='text-center text-xs text-gray-500 pb-5'>
         <a
           href='https://github.com/amelia-iky/playlist-youtube'
