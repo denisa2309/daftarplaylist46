@@ -14,9 +14,7 @@ const SearchForeign = () => {
       <h1 className='text-2xl font-semibold text-gray-600 mb-2'>
         Belum ada playlist ditemukan
       </h1>
-      <p className='text-gray-500'>
-        Yuk tambahkan playlist favorit kamu sekarang!
-      </p>
+      <p className='text-gray-500'>Tambahkan playlist favorit kamu sekarang!</p>
     </motion.div>
   );
 };
