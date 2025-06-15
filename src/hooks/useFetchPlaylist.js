@@ -1,7 +1,7 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
-export const useFetchPlaylist = (url) => {
+export const useFetchPlaylist = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -10,7 +10,7 @@ export const useFetchPlaylist = (url) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          "https://webfmsi.singapoly.com/api/playlist/46"
+          'https://webfmsi.singapoly.com/api/playlist/46'
         );
 
         setData(response.data.datas);
