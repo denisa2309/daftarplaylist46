@@ -5,8 +5,10 @@ export const useMutatePlaylist = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const mutate = async (id_play, data, method = 'POST') => {
+  const mutatePlaylist = async (id_play, data, method = 'POST') => {
     setLoading(true);
+    setError(null);
+
     try {
       const url = id_play
         ? `https://webfmsi.singapoly.com/api/playlist/update/${id_play}`
@@ -30,5 +32,5 @@ export const useMutatePlaylist = () => {
     }
   };
 
-  return { mutate, loading, error };
+  return { mutatePlaylist, loading, error };
 };
