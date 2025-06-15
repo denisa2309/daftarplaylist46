@@ -46,26 +46,44 @@ src/
 <table>
   <tr>
     <td align="center"><b>Landing Pages</b></td>
-    <td align="center"><b>Form View</b></td>
+    <td align="center"><b>Pagination</b></td>
   </tr>
   <tr>
     <td align="center">
       <img src="/public/landing-pages.png" alt="landing-pages" width="400"/>
     </td>
     <td align="center">
-      <img src="/public/form-view.png" alt="form-view" width="400"/>
+      <img src="/public/pagination.png" alt="pagination" width="400"/>
     </td>
   </tr>
+</table>
+
+<table>
   <tr>
+    <td align="center"><b>Form View</b></td>
     <td align="center"><b>Confirmation Button</b></td>
-    <td align="center"><b>Sweet Alert</b></td>
   </tr>
   <tr>
+    <td align="center">
+      <img src="/public/form-view.png" alt="form-view" width="400"/>
+    </td>
     <td align="center">
       <img src="/public/confirmation-button.png" alt="confirmation-button" width="400"/>
     </td>
+  </tr>
+</table>
+
+<table>
+  <tr>
+    <td align="center"><b>Searching Playlist</b></td>
+    <td align="center"><b>Search Empty Handler</b></td>
+  </tr>
+  <tr>
     <td align="center">
-      <img src="/public/sweet-alert.png" alt="sweet-alert" width="400"/>
+      <img src="/public/search-bar.png" alt="search-bar" width="400"/>
+    </td>
+    <td align="center">
+      <img src="/public/null-search.png" alt="null-search" width="400"/>
     </td>
   </tr>
 </table>
