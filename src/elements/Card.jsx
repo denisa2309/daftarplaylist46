@@ -136,7 +136,7 @@ const Card = ({
                 #{item.play_genre}
               </span>
 
-              <div className='flex gap-2'>
+              <div className='flex pb-6 gap-0 items-center'>
                 {/* Edit Buttons */}
                 <button
                   type='button'
