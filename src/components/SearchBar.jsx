@@ -2,7 +2,7 @@ import { GoSearch } from 'react-icons/go';
 
 const SearchBar = ({ searchTerm, onSearchChange }) => {
   return (
-    <div className='relative w-2/5 my-5 left-3'>
+    <div className='relative w-2/5 my-5 left-4'>
       <GoSearch className='absolute left-0 top-1 transform -translate-y-1/2 text-gray-500 text-xl' />
       <input
         type='text'
