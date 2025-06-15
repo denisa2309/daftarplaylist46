@@ -4,6 +4,7 @@ import Loading from '../components/Loading';
 import SearchBar from '../components/SearchBar';
 import Card from '../elements/Card';
 import Navbar from '../elements/Navbar';
+import Footer from '../elements/Footer';
 import { useFetchPlaylist } from '../hooks/useFetchPlaylist';
 
 const LandingPages = () => {
@@ -48,6 +49,7 @@ const LandingPages = () => {
         goToPrevPage={goToPrevPage}
         totalPages={totalPages}
       />
+      <Footer />
     </>
   );
 };
