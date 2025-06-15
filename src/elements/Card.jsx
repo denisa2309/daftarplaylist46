@@ -18,6 +18,7 @@ const Card = ({
   goToPrevPage,
   totalPages,
 }) => {
+  // Handler
   if (loading) return <Loading />;
   if (error) return <ErrorHandler />;
   if (!playlists || playlists.length === 0) {
@@ -37,6 +38,7 @@ const Card = ({
             key={item.id_play}
             className='flex flex-col gap-1 items-start w-96 rounded-2xl px-3 pb-3 bg-white border border-blue-200 shadow-md hover:shadow-2xl hover:scale-105 transform transition duration-300 ease-in-out'
           >
+            {/* Thumbnail */}
             <a
               href={item.play_url}
               target='_blank'
@@ -52,6 +54,8 @@ const Card = ({
                 <SiYoutube className='text-white text-7xl' />
               </div>
             </a>
+
+            {/* Title */}
             <a
               href={item.play_url}
               target='_blank'
@@ -60,18 +64,24 @@ const Card = ({
             >
               {item.play_name}
             </a>
+
+            {/* Description */}
             <span className='text-gray-600 text-base -mt-0 pt-1'>
               Ditambah oleh {item.play_description} pada{' '}
               {dayjs(item.created_at).locale('id').format('D MMMM YYYY')}
             </span>
+
+            {/* Genre and Actions */}
             <div className='flex justify-between items-center w-11/12 -mt-5 py-3'>
               <span className='text-sm bg-gray-100 rounded-full px-2 py-1'>
                 #{item.play_genre}
               </span>
               <div className='-mt-0'>
+                {/* Edit Buttons */}
                 <button className='text-gray-500 hover:text-gray-800 text-xl'>
                   <FiEdit />
                 </button>
+                {/* Delete Buttons */}
                 <button className='text-gray-500 hover:text-gray-800 text-xl'>
                   <RiDeleteBin6Line />
                 </button>
@@ -80,6 +90,8 @@ const Card = ({
           </div>
         ))}
       </div>
+
+      {/* Pagination */}
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}

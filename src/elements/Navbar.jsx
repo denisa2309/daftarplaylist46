@@ -13,7 +13,15 @@ const Navbar = () => {
   return (
     <div className='pt-3 pb-4'>
       <div className='flex flex-row justify-between items-center'>
-        <h1 className='text-5xl font-bold'>Daftar Playlist Saya</h1>
+        <motion.h1
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          whileHover={{ scale: 1.05 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className='text-5xl font-bold bg-gradient-to-r from-pink to-blue-500 text-transparent bg-clip-text drop-shadow-md'
+        >
+          Daftar Playlist Saya
+        </motion.h1>
         {/* Add Playlist Button */}
         <Button type='button' onClick={toggleForm}>
           {showForm} + Tambah Playlist
