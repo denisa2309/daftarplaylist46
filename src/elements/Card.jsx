@@ -95,7 +95,7 @@ const Card = ({
         {currentData.map((item) => (
           <div
             key={item.id_play}
-            className='flex flex-col gap-1 items-start w-full max-w-sm mx-auto rounded-2xl px-3 pb-3 bg-white border border-blue-200 shadow-md hover:shadow-2xl hover:scale-105 transform transition duration-300 ease-in-out'
+            className='flex flex-col gap-0 items-start w-full max-w-sm mx-auto rounded-2xl px-3 pb-5 bg-white border border-blue-200 shadow-md hover:shadow-2xl hover:scale-105 transform transition duration-300 ease-in-out'
           >
             {/* Thumbnail */}
             <a
@@ -119,19 +119,19 @@ const Card = ({
               href={item.play_url}
               target='_blank'
               rel='noopener noreferrer'
-              className='text-lg sm:text-xl font-semibold mt-2'
+              className='text-lg sm:text-xl font-semibold mt-3'
             >
               {item.play_name}
             </a>
 
             {/* Description */}
-            <span className='text-gray-600 text-sm sm:text-base pt-1'>
+            <span className='text-gray-600 text-sm sm:text-base'>
               Ditambah oleh {item.play_description} pada{' '}
               {dayjs(item.created_at).locale('id').format('D MMMM YYYY')}
             </span>
 
             {/* Genre and Actions */}
-            <div className='flex justify-between items-center w-full mt-2'>
+            <div className='flex justify-between items-center w-full -mt-0'>
               <span className='text-xs sm:text-sm bg-gray-100 rounded-full px-2 py-1'>
                 #{item.play_genre}
               </span>
