@@ -1,10 +1,6 @@
 import { useState } from 'react';
-import ErrorHandler from '../components/ErrorHandler';
-import Loading from '../components/Loading';
-import SearchBar from '../components/SearchBar';
-import Card from '../elements/Card';
-import Navbar from '../elements/Navbar';
-import Footer from '../elements/Footer';
+import { ErrorHandler, Loading, SearchBar } from '../components';
+import { Card, Footer, Navbar } from '../elements';
 import { useFetchPlaylist } from '../hooks/useFetchPlaylist';
 
 const LandingPages = () => {
