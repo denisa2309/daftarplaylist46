@@ -56,12 +56,9 @@ src/
       <img src="/public/pagination.png" alt="pagination" width="400"/>
     </td>
   </tr>
+</table>
 
-  <!-- Space -->
-  <tr>
-    <td align="center"></td>
-    <td align="center"></td>
-  </tr>
+<table>
   <tr>
     <td align="center"><b>Form View</b></td>
     <td align="center"><b>Confirmation Button</b></td>
@@ -74,12 +71,9 @@ src/
       <img src="/public/confirmation-button.png" alt="confirmation-button" width="400"/>
     </td>
   </tr>
+</table>
 
-  <!-- Space -->
-  <tr>
-    <td align="center"></td>
-    <td align="center"></td>
-  </tr>
+<table>
   <tr>
     <td align="center"><b>Searching Playlist</b></td>
     <td align="center"><b>Search Empty Handler</b></td>
