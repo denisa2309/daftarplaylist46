@@ -1,8 +1,8 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Swal from "sweetalert2";
 import Button from "../components/Button";
 
-const Form = () => {
+const Form = ({ mode = "create", initialData = {}, onSuccess }) => {
   const [formData, setFormData] = useState({
     play_name: "",
     play_url: "",
@@ -11,78 +11,132 @@ const Form = () => {
     play_description: "",
   });
 
+  useEffect(() => {
+    if (mode === "edit" && initialData) {
+      setFormData(initialData);
+    }
+  }, [mode, initialData]);
+
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const result = await Swal.fire({
-      title: "Apakah kamu yakin?",
-      text: "Data akan disimpan!",
+    const confirm = await Swal.fire({
+      title: mode === "edit" ? "Simpan perubahan?" : "Tambah data?",
       icon: "question",
       showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
       confirmButtonText: "Ya",
       cancelButtonText: "Batal",
       backdrop: false,
     });
 
-    if (result.isConfirmed) {
-      try {
-        const response = await fetch("https://webfmsi.singapoly.com/api/playlist/46", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(formData),
-        });
+    if (!confirm.isConfirmed) return;
 
-        if (!response.ok) {
-          throw new Error("Gagal menambahkan playlist");
-        }
+    try {
+      const url =
+        mode === "edit"
+          ? `https://webfmsi.singapoly.com/api/playlist/update/${initialData.id_play}`
+          : "https://webfmsi.singapoly.com/api/playlist/46"; // ← sesuaikan group_id
 
-        Swal.fire({
-          title: "Tersimpan!",
-          text: "Data playlist berhasil disimpan.",
-          icon: "success",
-          showConfirmButton: false,
-          timer: 1500,
-          backdrop: false,
-        }).then(() => {
-          window.location.reload();
-        });
-      } catch (error) {
-        Swal.fire("Error", error.message, "error");
+      // GUNAKAN FORMDATA
+      const form = new FormData();
+      Object.keys(formData).forEach((key) => {
+        form.append(key, formData[key]);
+      });
+
+      const response = await fetch(url, {
+        method: "POST",
+        body: form,
+      });
+
+      if (!response.ok) {
+        const errorMessage = await response.text(); // atau .json() tergantung respons
+        throw new Error(`Gagal menyimpan data: ${errorMessage}`);
       }
+
+      Swal.fire({
+        title: "Berhasil!",
+        text:
+          mode === "edit" ? "Playlist diperbarui." : "Playlist ditambahkan.",
+        icon: "success",
+        timer: 1500,
+        showConfirmButton: false,
+        backdrop: false,
+      });
+
+      if (onSuccess) onSuccess();
+    } catch (err) {
+      Swal.fire("Gagal", err.message, "error");
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4 p-4 mt-6 max-w-md mx-auto bg-white rounded-2xl border border-blue-200">
-      <h2 className="text-2xl font-semibold text-center mb-2">Tambah Playlist Baru</h2>
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col gap-4 p-4 mt-6 max-w-md mx-auto bg-white rounded-2xl border border-blue-200"
+    >
+      <h2 className="text-2xl font-semibold text-center mb-2">
+        {mode === "edit" ? "Edit Playlist" : "Tambah Playlist Baru"}
+      </h2>
 
-      <input type="text" name="play_name" value={formData.play_name} onChange={handleChange} placeholder="Nama Playlist" className="border border-gray-300 rounded p-2" required />
+      <input
+        type="text"
+        name="play_name"
+        value={formData.play_name}
+        onChange={handleChange}
+        placeholder="Nama Playlist"
+        className="border border-gray-300 rounded p-2"
+        required
+      />
 
-      <input type="text" name="play_url" value={formData.play_url} onChange={handleChange} placeholder="URL Playlist" className="border border-gray-300 rounded p-2" required />
+      <input
+        type="text"
+        name="play_url"
+        value={formData.play_url}
+        onChange={handleChange}
+        placeholder="URL Playlist"
+        className="border border-gray-300 rounded p-2"
+        required
+      />
 
-      <input type="text" name="play_thumbnail" value={formData.play_thumbnail} onChange={handleChange} placeholder="Thumbnail URL" className="border border-gray-300 rounded p-2" required />
+      <input
+        type="text"
+        name="play_thumbnail"
+        value={formData.play_thumbnail}
+        onChange={handleChange}
+        placeholder="Thumbnail URL"
+        className="border border-gray-300 rounded p-2"
+        required
+      />
 
-      <select name="play_genre" value={formData.play_genre} onChange={handleChange} className="border border-gray-300 rounded p-2 text-gray-500" required>
+      <select
+        name="play_genre"
+        value={formData.play_genre}
+        onChange={handleChange}
+        className="border border-gray-300 rounded p-2 text-gray-500"
+        required
+      >
         <option value="">-- Pilih Genre --</option>
         <option value="Education">Education</option>
         <option value="Music">Music</option>
         <option value="Movie">Movie</option>
       </select>
 
-      <textarea name="play_description" value={formData.play_description} onChange={handleChange} placeholder="Deskripsi Playlist" className="border border-gray-300 rounded p-2" required />
+      <textarea
+        name="play_description"
+        value={formData.play_description}
+        onChange={handleChange}
+        placeholder="Deskripsi Playlist"
+        className="border border-gray-300 rounded p-2"
+        required
+      />
 
-      <Button type="submit">Simpan</Button>
+      <Button type="submit">
+        {mode === "edit" ? "Simpan Perubahan" : "Simpan"}
+      </Button>
     </form>
   );
 };
