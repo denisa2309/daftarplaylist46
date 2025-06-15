@@ -24,6 +24,7 @@ const Card = ({
   totalPages,
 }) => {
   // State for showing form
+  const [editData, setEditData] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const toggleForm = () => setShowForm(!showForm);
 
@@ -89,7 +90,10 @@ const Card = ({
                 {/* Edit Buttons */}
                 <button
                   type='button'
-                  onClick={toggleForm}
+                  onClick={() => {
+                    setEditData(item);
+                    setShowForm(true);
+                  }}
                   className='text-gray-500 hover:text-gray-800 text-xl'
                 >
                   <FiEdit />
@@ -126,7 +130,10 @@ const Card = ({
                 >
                   <ImCancelCircle />
                 </button>
-                <Form />
+                <Form
+                  initialData={editData || {}}
+                  id_play={editData?.id_play || null}
+                />
               </motion.div>
             </motion.div>
           )}
