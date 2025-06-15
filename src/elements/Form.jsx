@@ -71,7 +71,7 @@ const Form = ({ initialData = {}, id_play = null }) => {
         value={formData.play_name}
         onChange={handleChange}
         placeholder='Nama Playlist'
-        className='border border-gray-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-300 transition duration-300'
+        className='border border-gray-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-300 transition duration-300'
         required
       />
 
@@ -81,7 +81,7 @@ const Form = ({ initialData = {}, id_play = null }) => {
         value={formData.play_url}
         onChange={handleChange}
         placeholder='URL Playlist'
-        className='border border-gray-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-300 transition duration-300'
+        className='border border-gray-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-300 transition duration-300'
         required
       />
 
@@ -91,7 +91,7 @@ const Form = ({ initialData = {}, id_play = null }) => {
         value={formData.play_thumbnail}
         onChange={handleChange}
         placeholder='Thumbnail URL'
-        className='border border-gray-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-300 transition duration-300'
+        className='border border-gray-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-300 transition duration-300'
         required
       />
 
@@ -99,7 +99,7 @@ const Form = ({ initialData = {}, id_play = null }) => {
         name='play_genre'
         value={formData.play_genre}
         onChange={handleChange}
-        className='border border-gray-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-300 transition duration-300'
+        className='border border-gray-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-300 transition duration-300'
         required
       >
         <option value=''>-- Pilih Genre --</option>
@@ -113,7 +113,7 @@ const Form = ({ initialData = {}, id_play = null }) => {
         value={formData.play_description}
         onChange={handleChange}
         placeholder='Deskripsi Playlist'
-        className='border border-gray-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-300 transition duration-300'
+        className='border border-gray-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-300 transition duration-300'
         required
       />
 

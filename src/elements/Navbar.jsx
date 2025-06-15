@@ -11,13 +11,13 @@ const Navbar = () => {
 
   return (
     <div className='pt-2 pb-4 px-2 sm:px-4'>
-      <div className='flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0'>
+      <div className='flex flex-col sm:flex-row justify-between items-center gap-5 sm:gap-0'>
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
-          className='text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-pink to-blue-500 text-transparent bg-clip-text drop-shadow-md text-center sm:text-left'
+          className='text-4xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-pink to-blue-500 text-transparent bg-clip-text drop-shadow-md text-center sm:text-left'
         >
           Daftar Playlist Saya
         </motion.h1>
