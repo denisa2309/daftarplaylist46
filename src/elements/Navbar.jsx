@@ -10,14 +10,14 @@ const Navbar = () => {
   const toggleForm = () => setShowForm(!showForm);
 
   return (
-    <div className='pt-2 pb-4'>
-      <div className='flex flex-row justify-between items-center'>
+    <div className='pt-2 pb-4 px-2 sm:px-4'>
+      <div className='flex flex-col sm:flex-row justify-between items-center gap-2 sm:gap-0'>
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           whileHover={{ scale: 1.05 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
-          className='text-5xl font-bold bg-gradient-to-r from-pink to-blue-500 text-transparent bg-clip-text drop-shadow-md'
+          className='text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r from-pink to-blue-500 text-transparent bg-clip-text drop-shadow-md text-center sm:text-left'
         >
           Daftar Playlist Saya
         </motion.h1>
@@ -41,7 +41,7 @@ const Navbar = () => {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
               transition={{ duration: 0.3, ease: 'easeOut' }}
-              className='bg-white rounded-xl p-6 shadow-lg relative w-full max-w-md border border-blue-200'
+              className='bg-white rounded-xl p-6 shadow-lg relative w-full max-w-md mx-2 border border-blue-200'
             >
               <button
                 className='absolute top-0 right-0 text-gray-500 hover:text-red-500 text-xl font-bold'

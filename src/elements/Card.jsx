@@ -91,18 +91,18 @@ const Card = ({
 
   return (
     <>
-      <div className='grid grid-cols-3 gap-4'>
+      <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4'>
         {currentData.map((item) => (
           <div
             key={item.id_play}
-            className='flex flex-col gap-1 items-start w-96 rounded-2xl px-3 pb-3 bg-white border border-blue-200 shadow-md hover:shadow-2xl hover:scale-105 transform transition duration-300 ease-in-out'
+            className='flex flex-col gap-1 items-start w-full max-w-sm mx-auto rounded-2xl px-3 pb-3 bg-white border border-blue-200 shadow-md hover:shadow-2xl hover:scale-105 transform transition duration-300 ease-in-out'
           >
             {/* Thumbnail */}
             <a
               href={item.play_url}
               target='_blank'
               rel='noopener noreferrer'
-              className='relative flex flex-col items-center justify-center w-11/12 h-40'
+              className='relative flex flex-col items-center justify-center h-40 sm:h-44 md:h-48'
             >
               <img
                 src={item.play_thumbnail}
@@ -110,7 +110,7 @@ const Card = ({
                 className='w-full h-full object-cover rounded'
               />
               <div className='absolute inset-0 flex items-center justify-center'>
-                <SiYoutube className='text-white text-7xl' />
+                <SiYoutube className='text-white text-5xl sm:text-6xl md:text-7xl' />
               </div>
             </a>
 
@@ -119,24 +119,24 @@ const Card = ({
               href={item.play_url}
               target='_blank'
               rel='noopener noreferrer'
-              className='text-xl font-semibold'
+              className='text-lg sm:text-xl font-semibold mt-2'
             >
               {item.play_name}
             </a>
 
             {/* Description */}
-            <span className='text-gray-600 text-base -mt-0 pt-1'>
+            <span className='text-gray-600 text-sm sm:text-base pt-1'>
               Ditambah oleh {item.play_description} pada{' '}
               {dayjs(item.created_at).locale('id').format('D MMMM YYYY')}
             </span>
 
             {/* Genre and Actions */}
-            <div className='flex justify-between items-center w-11/12 -mt-5 py-3'>
-              <span className='text-sm bg-gray-100 rounded-full px-2 py-1'>
+            <div className='flex justify-between items-center w-full mt-2'>
+              <span className='text-xs sm:text-sm bg-gray-100 rounded-full px-2 py-1'>
                 #{item.play_genre}
               </span>
 
-              <div className='-mt-0'>
+              <div className='flex gap-2'>
                 {/* Edit Buttons */}
                 <button
                   type='button'
@@ -144,7 +144,7 @@ const Card = ({
                     setEditData(item);
                     setShowForm(true);
                   }}
-                  className='text-gray-500 hover:text-gray-800 text-xl'
+                  className='text-gray-500 hover:text-gray-800 text-lg sm:text-xl'
                 >
                   <FiEdit />
                   {showForm}
@@ -154,7 +154,7 @@ const Card = ({
                 <button
                   type='button'
                   onClick={() => handleDelete(item.id_play)}
-                  className='text-gray-500 hover:text-gray-800 text-xl'
+                  className='text-gray-500 hover:text-gray-800 text-lg sm:text-xl'
                 >
                   <RiDeleteBin6Line />
                 </button>
