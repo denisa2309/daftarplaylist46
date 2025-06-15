@@ -37,7 +37,7 @@ const Card = ({
   // Delete Playlist Hook
   const { deleteData } = useDeletePlaylist();
 
-  // Handle Delete Playlist
+  // Handle delete data
   const handleDelete = async (id_play) => {
     const result = await Swal.fire({
       title: 'Hapus Playlist',
@@ -135,6 +135,7 @@ const Card = ({
               <span className='text-sm bg-gray-100 rounded-full px-2 py-1'>
                 #{item.play_genre}
               </span>
+
               <div className='-mt-0'>
                 {/* Edit Buttons */}
                 <button
