@@ -16,7 +16,7 @@ const Pagination = ({
         <GrFormPrevious size={24} />
       </button>
 
-      <span>
+      <span className='text-sm sm:text-base md:text-lg'>
         Halaman {currentPage} dari {totalPages}
       </span>
 

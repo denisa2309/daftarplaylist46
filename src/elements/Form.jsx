@@ -59,18 +59,19 @@ const Form = ({ initialData = {}, id_play = null }) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className='flex flex-col gap-4 p-4 mt-6 max-w-md mx-auto bg-white rounded-2xl border border-blue-200'
+      className='flex flex-col gap-4 p-4 mt-6 w-full max-w-lg mx-auto bg-white rounded-2xl border border-blue-200 shadow-md'
     >
-      <h2 className='text-2xl font-semibold text-center mb-2'>
+      <h2 className='text-2xl sm:text-3xl font-semibold text-center mb-4'>
         {id_play ? 'Edit Playlist' : 'Tambah Playlist Baru'}
       </h2>
+
       <input
         type='text'
         name='play_name'
         value={formData.play_name}
         onChange={handleChange}
         placeholder='Nama Playlist'
-        className='border border-gray-300 rounded-lg p-2 text-gray-700 focus:outline-none focus:ring-1'
+        className='border border-gray-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-300 transition duration-300'
         required
       />
 
@@ -80,7 +81,7 @@ const Form = ({ initialData = {}, id_play = null }) => {
         value={formData.play_url}
         onChange={handleChange}
         placeholder='URL Playlist'
-        className='border border-gray-300 rounded-lg p-2 text-gray-700 focus:outline-none focus:ring-1'
+        className='border border-gray-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-300 transition duration-300'
         required
       />
 
@@ -90,7 +91,7 @@ const Form = ({ initialData = {}, id_play = null }) => {
         value={formData.play_thumbnail}
         onChange={handleChange}
         placeholder='Thumbnail URL'
-        className='border border-gray-300 rounded-lg p-2 text-gray-700 focus:outline-none focus:ring-1'
+        className='border border-gray-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-300 transition duration-300'
         required
       />
 
@@ -98,7 +99,7 @@ const Form = ({ initialData = {}, id_play = null }) => {
         name='play_genre'
         value={formData.play_genre}
         onChange={handleChange}
-        className='border border-gray-300 rounded-lg p-2 text-gray-700 focus:outline-none focus:ring-1'
+        className='border border-gray-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-300 transition duration-300'
         required
       >
         <option value=''>-- Pilih Genre --</option>
@@ -112,9 +113,10 @@ const Form = ({ initialData = {}, id_play = null }) => {
         value={formData.play_description}
         onChange={handleChange}
         placeholder='Deskripsi Playlist'
-        className='border border-gray-300 rounded-lg p-2 text-gray-700 focus:outline-none focus:ring-1'
+        className='border border-gray-300 rounded-lg p-3 text-gray-700 focus:outline-none focus:ring-1 focus:ring-blue-300 transition duration-300'
         required
       />
+
       <Button type='submit'>{loading ? 'Memproses...' : 'Simpan'}</Button>
     </form>
   );
