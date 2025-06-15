@@ -8,6 +8,7 @@ import { useFetchPlaylist } from "../hooks/useFetchPlaylist";
 import { SiYoutube } from "react-icons/si";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { FiEdit } from "react-icons/fi";
+import Swal from "sweetalert2";
 
 const Card = () => {
   const { data, loading, error } = useFetchPlaylist();
@@ -67,7 +68,20 @@ const Card = () => {
               onSuccess={() => {
                 setEditMode(false);
                 setEditData(null);
-                window.location.reload();
+
+                // Notifikasi di Card setelah edit sukses
+                Swal.fire({
+                  title: "Berhasil!",
+                  text: "Playlist berhasil diperbarui.",
+                  icon: "success",
+                  timer: 1500,
+                  showConfirmButton: false,
+                  backdrop: false,
+                });
+
+                setTimeout(() => {
+                  window.location.reload();
+                }, 1600);
               }}
             />
           </div>
