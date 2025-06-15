@@ -37,10 +37,11 @@ const Card = ({
   // Delete Playlist Hook
   const { deleteData } = useDeletePlaylist();
 
+  // Handle Delete Playlist
   const handleDelete = async (id_play) => {
     const result = await Swal.fire({
-      title: 'Apakah yakin?',
-      text: 'Data playlist ini akan dihapus secara permanen!',
+      title: 'Hapus Playlist',
+      text: 'Apakah kamu yakin ingin menghapus playlist ini?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
