@@ -35,7 +35,7 @@ const Card = ({
         {currentData.map((item) => (
           <div
             key={item.id_play}
-            className='flex flex-col gap-1 items-start w-96 rounded-2xl px-3 pb-3 bg-white border border-blue-200 shadow-md hover:shadow-lg transition-shadow'
+            className='flex flex-col gap-1 items-start w-96 rounded-2xl px-3 pb-3 bg-white border border-blue-200 shadow-md hover:shadow-2xl hover:scale-105 transform transition duration-300 ease-in-out'
           >
             <a
               href={item.play_url}
