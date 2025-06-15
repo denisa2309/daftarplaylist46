@@ -3,13 +3,15 @@ import dayjs from 'dayjs';
 import 'dayjs/locale/id';
 // eslint-disable-next-line no-unused-vars
 import { motion, AnimatePresence } from 'framer-motion';
-import Form from './Form';
+import Swal from 'sweetalert2';
 import {
   ErrorHandler,
   Loading,
   Pagination,
   SearchForeign,
 } from '../components';
+import Form from './Form';
+import { useDeletePlaylist } from '../hooks/useDeletePlaylist';
 import { FiEdit } from 'react-icons/fi';
 import { ImCancelCircle } from 'react-icons/im';
 import { RiDeleteBin6Line } from 'react-icons/ri';
@@ -26,9 +28,53 @@ const Card = ({
   totalPages,
 }) => {
   // State for showing form
-  const [editData, setEditData] = useState(null);
   const [showForm, setShowForm] = useState(false);
   const toggleForm = () => setShowForm(!showForm);
+
+  // State for editing data
+  const [editData, setEditData] = useState(null);
+
+  // Delete Playlist Hook
+  const { deleteData } = useDeletePlaylist();
+
+  const handleDelete = async (id_play) => {
+    const result = await Swal.fire({
+      title: 'Apakah yakin?',
+      text: 'Data playlist ini akan dihapus secara permanen!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ya',
+      cancelButtonText: 'Batal',
+      backdrop: false,
+    });
+
+    if (result.isConfirmed) {
+      try {
+        await deleteData(id_play);
+        Swal.fire({
+          title: 'Berhasil!',
+          text: 'Data berhasil dihapus.',
+          icon: 'success',
+          timer: 2000,
+          timerProgressBar: true,
+          showConfirmButton: false,
+          backdrop: false,
+        }).then(() => window.location.reload());
+      } catch (error) {
+        Swal.fire({
+          title: 'Gagal!',
+          text: 'Terjadi kesalahan saat menghapus data.',
+          icon: 'error',
+          timer: 2000,
+          timerProgressBar: true,
+          showConfirmButton: false,
+          backdrop: false,
+        });
+      }
+    }
+  };
 
   // Handler
   if (loading) return <Loading />;
@@ -101,8 +147,13 @@ const Card = ({
                   <FiEdit />
                   {showForm}
                 </button>
+
                 {/* Delete Buttons */}
-                <button className='text-gray-500 hover:text-gray-800 text-xl'>
+                <button
+                  type='button'
+                  onClick={() => handleDelete(item.id_play)}
+                  className='text-gray-500 hover:text-gray-800 text-xl'
+                >
                   <RiDeleteBin6Line />
                 </button>
               </div>
