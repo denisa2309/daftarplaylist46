@@ -1,15 +1,18 @@
 import { useState } from 'react';
 import Swal from 'sweetalert2';
 import Button from '../components/Button';
+import { useMutatePlaylist } from '../hooks/useMutatePlaylist';
 
-const Form = () => {
+const Form = ({ initialData = {}, id_play = null }) => {
   const [formData, setFormData] = useState({
-    play_name: '',
-    play_url: '',
-    play_thumbnail: '',
-    play_genre: '',
-    play_description: '',
+    play_name: initialData.play_name || '',
+    play_url: initialData.play_url || '',
+    play_thumbnail: initialData.play_thumbnail || '',
+    play_genre: initialData.play_genre || '',
+    play_description: initialData.play_description || '',
   });
+
+  const { mutate, loading } = useMutatePlaylist();
 
   const handleChange = (e) => {
     setFormData({
@@ -23,7 +26,7 @@ const Form = () => {
 
     const result = await Swal.fire({
       title: 'Apakah kamu yakin?',
-      text: 'Data akan disimpan!',
+      text: id_play ? 'Data akan diperbarui!' : 'Data akan disimpan!',
       icon: 'question',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
@@ -34,34 +37,20 @@ const Form = () => {
     });
 
     if (result.isConfirmed) {
-      try {
-        const response = await fetch(
-          'https://webfmsi.singapoly.com/api/playlist/46',
-          {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-          }
-        );
-
-        if (!response.ok) {
-          throw new Error('Gagal menambahkan playlist');
-        }
-
+      const res = await mutate(id_play, formData);
+      if (res) {
         Swal.fire({
-          title: 'Tersimpan!',
-          text: 'Data playlist berhasil disimpan.',
+          title: 'Berhasil!',
+          text: id_play
+            ? 'Data berhasil diperbarui.'
+            : 'Data berhasil ditambahkan.',
           icon: 'success',
-          showConfirmButton: false,
           timer: 1500,
+          showConfirmButton: false,
           backdrop: false,
         }).then(() => {
           window.location.reload();
         });
-      } catch (err) {
-        console.error({ message: err.message });
       }
     }
   };
@@ -72,9 +61,8 @@ const Form = () => {
       className='flex flex-col gap-4 p-4 mt-6 max-w-md mx-auto bg-white rounded-2xl border border-blue-200'
     >
       <h2 className='text-2xl font-semibold text-center mb-2'>
-        Tambah Playlist Baru
+        {id_play ? 'Edit Playlist' : 'Tambah Playlist Baru'}
       </h2>
-
       <input
         type='text'
         name='play_name'
@@ -126,8 +114,7 @@ const Form = () => {
         className='border border-gray-300 rounded p-2'
         required
       />
-
-      <Button type='submit'>Simpan</Button>
+      <Button type='submit'>{loading ? 'Memproses...' : 'Simpan'}</Button>
     </form>
   );
 };
