@@ -11,7 +11,7 @@ const Pagination = ({
       <button
         onClick={goToPrevPage}
         disabled={currentPage === 1}
-        className='cursor-pointer disabled:cursor-not-allowed hover:text-black'
+        className='cursor-pointer disabled:cursor-not-allowed hover:text-black hover:scale-110 transform transition duration-300 ease-in-out'
       >
         <GrFormPrevious size={24} />
       </button>
@@ -23,7 +23,7 @@ const Pagination = ({
       <button
         onClick={goToNextPage}
         disabled={currentPage === totalPages}
-        className='cursor-pointer disabled:cursor-not-allowed hover:text-black'
+        className='cursor-pointer disabled:cursor-not-allowed hover:text-black hover:scale-110 transform transition duration-300 ease-in-out'
       >
         <GrFormNext size={24} />
       </button>
